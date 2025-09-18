@@ -8,6 +8,10 @@
     #   url = "github:nix-community/home-manager";
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
+
+  #add grub themes to input
+    minegrub-theme.url = "github:Lxtharia/minegrub-theme";
+    # minegrub-world-sel-theme.url = "github:Lxtharia/minegrub-world-sel-theme";
   };
 
   outputs = { self, nixpkgs, ... }@inputs: {
@@ -20,7 +24,10 @@
         ./modules/nvidia.nix
         ./modules/grub.nix
         ./modules/gnome.nix
+        ./modules/swap.nix
         # inputs.home-manager.nixosModules.default
+        inputs.minegrub-theme.nixosModules.default
+        #inputs.minegrub-world-sel-theme.nixosModules.default
       ];
     };
   };

@@ -12,7 +12,7 @@
   ];
 
   networking.hostName = "nixos"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  # networking.wireless.enable = true; # Enables wireless support via wpa_supplicant.
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
@@ -73,7 +73,7 @@
   };
 
   # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
+  services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.anabs = {
@@ -110,6 +110,8 @@
     winetricks
     protonup-qt
     gitkraken
+    android-studio
+    prismlauncher
   ];
 
   nix.nixPath = ["nixpkgs=${inputs.nixpkgs}"];

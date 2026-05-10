@@ -6,5 +6,8 @@
   environment.systemPackages = with pkgs.gnomeExtensions; [
     appindicator
     dash-to-dock
+    caffeine
+    vitals
+    lockscreen-extension
   ];
 }

@@ -15,9 +15,9 @@
         minegrub-theme = {
           enable = true;
           splash = "May contain penguins!";
-          background = "background_options/1.20 - [Trails & Tales].png";
+          background = "background_options/1.21.5 - [Spring to Life].png";
         # "background_options/1.15 - [Buzzy Bees].png"
-        # "background_options/1.21.5 - [Spring to Life].png"
+        # "background_options/1.20 - [Trails & Tales].png"
         # "background_options/1.8 - [Classic Minecraft].png"
           boot-options-count = 5;
         };

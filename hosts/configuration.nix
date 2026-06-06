@@ -107,7 +107,7 @@
     l = null;
     ll = "ls -l";
     getToWork = "cd /home/anabs/Documents/Uni/2ºSemestre/";
-    getToProject = "cd /home/anabs/Documents/Uni/2ºSemestre/project/pyDHM-master/";
+    getToProject = "cd /home/anabs/Documents/Uni/2ºSemestre/projeto/pyDHM-master/";
     getToJavaTraining = "cd /home/anabs/Documents/Uni/2ºSemestre/SD/my-app/src/main/java/com/sistemasDistribuidos/";
     #hello = "echo 'Ola o meu nome e $nome, e sou natural de $naturalidade.'";
   };
@@ -126,7 +126,6 @@
     enable = true;
   };
 
-  programs.gnupg.agent.enable = true;
   programs.steam.enable = true;
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -190,7 +189,8 @@
               builtins.filter (p: (p.pname or "") != "openldap") originalPkgs ++ [customLdap];
           });
     })
-    
+    cisco-packet-tracer_9
+    xdg-utils
   ];
 
   services.thermald.enable = true;
@@ -205,6 +205,23 @@
   nix.settings = {
     download-buffer-size = 134217728;
   };
+
+  ############# SI -- apache server
+
+  networking.firewall.allowedTCPPorts = [80 443 3080];
+
+  #services.httpd.enable = true;
+  #services.httpd.adminAddr = "admin@website.org";
+  #services.httpd.enablePHP = true;
+
+  #services.httpd.virtualHosts."nixos.org" = {
+  #  documentRoot = "/var/www/nixos.org";
+  #};
+
+  #services.mysql.enable = true;
+  #services.mysql.package = pkgs.mariadb;
+
+  #############
 
   programs.nh = {
     enable = true;
@@ -221,10 +238,12 @@
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
+
+  # PGP enabling
+  programs.gnupg.agent = {
+    enable = true;
+    enableSSHSupport = true;
+  };
 
   # List services that you want to enable:
 
@@ -236,6 +255,9 @@
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
+
+  hardware.bluetooth.enable = true;
+  hardware.xpadneo.enable = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

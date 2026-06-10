@@ -191,6 +191,7 @@
     })
     cisco-packet-tracer_9
     xdg-utils
+    brave
   ];
 
   services.thermald.enable = true;

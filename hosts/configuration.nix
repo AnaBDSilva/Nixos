@@ -22,6 +22,7 @@
     "/home" = {
       device = "/dev/disk/by-label/HOME";
       fsType = "ext4";
+      options = ["noatime" "nodiratime"];
     };
   };
 
@@ -29,12 +30,21 @@
   # networking.wireless.enable = true; # Enables wireless support via wpa_supplicant.
 
   boot.kernelPackages = pkgs.linuxPackages_zen;
+  boot.kernelParams = [
+    "nvme_core.default_ps_max_latency_us=0"
+    "nvidia-drm.modeset=1"
+  ];
+
+  boot.kernel.sysctl = {
+  "vm.max_map_count" = 2147483642;  
+};
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Enable networking
   networking.networkmanager.enable = true;
+  networking.nameservers = ["1.1.1.1" "8.8.8.8"];
 
   # Set your time zone.
   time.timeZone = "Europe/Lisbon";
@@ -113,14 +123,17 @@
   };
 
   nix.settings = {
+    trusted-users = ["root" "anabs"];
+
     substituters = [
+      "https://cache.nixos.org"
       "https://cache.nixos-cuda.org"
     ];
     trusted-public-keys = [
+      "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
       "cache.nixos-cuda.org:74DUi4Ye579gUqzH4ziL9IyiJBlDpMRn9MBN8oNan9M="
     ];
   };
-  nixpkgs.config.cudaSupport = true;
 
   programs.coolercontrol = {
     enable = true;
@@ -192,6 +205,7 @@
     cisco-packet-tracer_9
     xdg-utils
     brave
+    zotero
   ];
 
   services.thermald.enable = true;

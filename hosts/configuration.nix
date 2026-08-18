@@ -202,10 +202,11 @@
               builtins.filter (p: (p.pname or "") != "openldap") originalPkgs ++ [customLdap];
           });
     })
-    cisco-packet-tracer_9
+    #cisco-packet-tracer_9
     xdg-utils
     brave
     zotero
+    whatsapp-for-linux
   ];
 
   services.thermald.enable = true;

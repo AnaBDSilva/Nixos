@@ -206,7 +206,6 @@
     xdg-utils
     brave
     zotero
-    whatsapp-for-linux
   ];
 
   services.thermald.enable = true;
